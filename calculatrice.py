@@ -8,11 +8,13 @@ def calculatrice():
 
     while True:
         try:
-            operation = input("Type d'opération : ")
+            operation = input("Type d'opération (+, -, *, /, **) : ")
             if operation == '+' or operation == '-' or operation == '/' or operation == '*' or operation == '**':
                 break
-        except ValueError: 
-            print("Entrez un opérateur valide : ")
+            else:
+                print("Entrez un opérateur valide : ")
+        except ValueError:
+            print()
 
     while True:
         try:
