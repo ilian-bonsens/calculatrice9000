@@ -38,11 +38,15 @@ def calculatrice():
     print(f"Résultat : {resultat}")
 
     while True:
-        ask_historique = input("Voulez-vous afficher l'historique (y/n) ? ")
+        ask_historique = input("Voulez-vous afficher l'historique (y/n) ou l'effacer (d) ? ")
         if ask_historique.lower() == 'y':
             print(historique)
             break
         elif ask_historique.lower() == 'n':
+            break
+        elif ask_historique.lower() == 'd':
+            historique = ""
+            print("Historique effacé avec succès.")
             break
         else:
             print("Erreur : pour afficher l'historique entrez Oui (y) ou non (n).")
