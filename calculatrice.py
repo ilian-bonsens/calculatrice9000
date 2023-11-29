@@ -1,18 +1,21 @@
+historique = ""
+
 def calculatrice():
+    global historique
     while True:
         try:
             num1 = float(input("Entrez un nombre valide : "))
             break
         except ValueError: 
-            print("Entrez un autre nombre : ")
+            print("Erreur : entrez un caractère valide (nombre).")
 
     while True:
         try:
             operation = input("Type d'opération (+, -, *, /, **) : ")
-            if operation == '+' or operation == '-' or operation == '/' or operation == '*' or operation == '**':
+            if operation in ['+', '-', '/', '*', '**']:
                 break
             else:
-                print("Entrez un opérateur valide : ")
+                print("Erreur : entrez un caractère valide (+, -, *, /, **) : ")
         except ValueError:
             print()
 
@@ -24,17 +27,43 @@ def calculatrice():
             else:
                 break
         except ValueError: 
-            print("Entrez un autre nombre.")
+            print("Erreur : entrez un caractère valide (nombre).")
 
     if operation == "+":
-        print (num1+num2)
+        resultat = num1 + num2
+        historique += f"{num1} + {num2} = {resultat}\n"
     elif operation == "-":
-        print (num1-num2)
+        resultat = num1 - num2
+        historique += f"{num1} - {num2} = {resultat}\n"
     elif operation == "*":
-        print (num1*num2)
+        resultat = num1 * num2
+        historique += f"{num1} * {num2} = {resultat}\n"
     elif operation == "/":
-        print (num1/num2)
+        resultat = num1 / num2
+        historique += f"{num1} / {num2} = {resultat}\n"
     elif operation == "**":
-        print(num1**num2)
+        resultat = num1 ** num2
+        historique += f"{num1} ** {num2} = {resultat}\n"
 
-calculatrice()
+    print(f"Résultat : {resultat}")
+
+    while True:
+        ask_historique = input("Voulez-vous afficher l'historique (y/n) ? ")
+        if ask_historique.lower() == 'y':
+            print(historique)
+            break
+        elif ask_historique.lower() == 'n':
+            break
+        else:
+            print("Erreur : pour afficher l'historique entrez Oui (y) ou non (n).")
+
+while True:
+    calculatrice()
+    while True:
+        continuer = input("Continuer (y/n) ? ")
+        if continuer.lower() == 'y':
+            break
+        elif continuer.lower() == 'n':
+            exit()
+        else:
+            print("Erreur : pour continuer entrez oui (y) ou non (n)")
